@@ -1,0 +1,32 @@
+{
+  "name": "opencli-njust",
+  "version": "0.1.0",
+  "private": false,
+  "description": "NJUST extension for OpenCLI, starting with schedule query support.",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "scripts"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "powershell -NoProfile -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sync:opencli": "node ./scripts/sync-opencli.mjs"
+  },
+  "peerDependencies": {
+    "@jackwener/opencli": "^1.6.7"
+  },
+  "devDependencies": {
+    "@jackwener/opencli": "^1.6.7",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
+  }
+}
+
