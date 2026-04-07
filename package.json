@@ -16,6 +16,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "clean": "powershell -NoProfile -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }\"",
+    "prepare:release": "node ./scripts/prepare-release.mjs",
+    "pack:release": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/package-release.ps1",
     "test": "vitest run",
     "test:watch": "vitest",
     "sync:opencli": "node ./scripts/sync-opencli.mjs"
@@ -25,8 +27,8 @@
   },
   "devDependencies": {
     "@jackwener/opencli": "^1.6.7",
+    "@types/node": "^24.5.2",
     "typescript": "^5.8.3",
     "vitest": "^3.1.1"
   }
 }
-

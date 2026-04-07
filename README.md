@@ -47,6 +47,35 @@ npm run build
 npm run test
 ```
 
+## GitHub Releases
+
+这个仓库已经补齐了 GitHub Releases 所需的基础文件和工作流。
+
+本地打包检查：
+
+```bash
+npm install
+npm run build
+npm run test
+npm run pack:release
+```
+
+发布流程：
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+推送 `v*` tag 后，GitHub Actions 会自动：
+
+- 安装依赖
+- 编译项目
+- 运行测试
+- 生成 release 目录
+- 打包 zip 附件
+- 创建 GitHub Release
+
 ## 同步到本地 OpenCLI
 
 构建后执行：
@@ -73,6 +102,7 @@ npm run sync:opencli
 - 优先顺序是：`--term-start` > `NJUST_TERM_START` > 根据学期字符串推断。
 - 如果学校校历和推断不一致，请显式传 `--term-start YYYY-MM-DD`。
 - 公开仓库建议只保留脱敏后的 fixture 或虚构测试数据，不要提交真实课表页面样本。
+- 本地 `release/` 目录只用于生成 GitHub Release 附件，默认不提交到仓库。
 
 ## 后续计划
 
@@ -80,4 +110,3 @@ npm run sync:opencli
 - `njust grades`
 - 更稳定的“当前周”自动识别
 - 把解析逻辑拆成更多纯函数测试
-
